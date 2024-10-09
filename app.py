@@ -1,9 +1,22 @@
-from flask import Flask
-app = Flask(__name__)
+from fastapi import FastAPI
+import servers as server
 
-@app.route('/')
-def hello():
-    return "Hello from Flask!"
+app = FastAPI()
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8206)
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+
+@app.get("/servers")
+async def servers():
+    print(server.serverList)
+    return server.getServers()
+
+
+@app.post("/servers/add")
+async def addServer(s: server.Server):
+    server.serverList.append(s)
+    print(s)
+    return s
