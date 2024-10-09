@@ -1,3 +1,5 @@
+import os
+import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -6,6 +8,6 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Default to 8000 if no port is provided
+    uvicorn.run(app, host="0.0.0.0", port=port)
