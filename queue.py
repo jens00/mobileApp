@@ -1,4 +1,4 @@
 queue = []
 
-def getQueue:
+def getQueue():
   return queue
