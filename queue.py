@@ -1,3 +1,4 @@
-serverList = []
+queue = []
 
-def 
+def getQueue:
+  return queue
