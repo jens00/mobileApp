@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import players as player
+import clients as client
 
 app = FastAPI()
 
