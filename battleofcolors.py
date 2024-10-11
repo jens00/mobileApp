@@ -1,3 +1,4 @@
+players = 0
 queue = []
 
 def getQueue():
