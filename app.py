@@ -1,10 +1,16 @@
 from fastapi import FastAPI
+import players as player
 
 app = FastAPI()
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+
+@app.post("/boc/add")
+async def bocAdd(p: player.Player):
+    print(p)
+    return p
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):
