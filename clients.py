@@ -41,5 +41,6 @@ def handle_pong(data):
         print(f"Client {client_id} is still alive.")
 
 
+print("Client manager is active!")
 socketio.start_background_task(ping_clients)
 socketio.run(app)
