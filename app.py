@@ -38,6 +38,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
             if message == "pong":
                 print(f"Client {client_id} is still alive.")
     except WebSocketDisconnect:
+        battleofcolors.removePlayerById(client_id)
         print(f"Client {client_id} disconnected.")
         clients.pop(client_id, None)
 
