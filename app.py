@@ -44,6 +44,7 @@ def read_root():
 @app.post("/boc/add")
 async def boc_add(client_id: str):
     print(f"Client ID: {client_id}")
+    battleofcolors.players.append(client_id)
     return "OK"
 
 if __name__ == "__main__":
