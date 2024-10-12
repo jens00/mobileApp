@@ -3,6 +3,8 @@ from fastapi.responses import HTMLResponse
 from typing import Dict
 import asyncio
 
+import battleofcolors
+
 app = FastAPI()
 clients: Dict[str, WebSocket] = {}  # Dictionary to hold client ID and WebSocket connection
 
