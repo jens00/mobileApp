@@ -11,7 +11,7 @@ def getPlayers():
 def getQueue():
   return queue
 
-async def addPlayer(client_id: str, websocket: WebSocket):
+async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
   print("Adding player")
   players.append(client_id)
 
