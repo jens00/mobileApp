@@ -10,7 +10,7 @@ def getPlayers():
 def getQueue():
   return queue
 
-def addPlayer(client_id: str):
+async addPlayer(client_id: str):
   players.append(client_id)
 
   if len(queue) > 0:
