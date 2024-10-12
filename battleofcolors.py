@@ -21,7 +21,6 @@ async def addPlayer(client_id: str, websocket: WebSocket):
 
     try:
       await websocket.send_text("found player")
-      await asyncio.wait_for(websocket.receive_text(), timeout=10)
     except (asyncio.TimeoutError):
       print("No response from client: " + client_id)
   else:
