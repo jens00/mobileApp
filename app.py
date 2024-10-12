@@ -1,12 +1,16 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from typing import Dict
+from pydantic import BaseModel
 import asyncio
 
 import battleofcolors
 
 app = FastAPI()
 clients: Dict[str, WebSocket] = {}  # Dictionary to hold client ID and WebSocket connection
+
+class Client(BaseModel):
+    id: str
 
 # Function to send ping and check response
 async def ping_clients():
@@ -42,9 +46,9 @@ def read_root():
     return HTMLResponse("<h1>WebSocket Server Running</h1>")
 
 @app.post("/boc/add")
-async def boc_add(client_id: str):
-    print(f"Client ID: {client_id}")
-    battleofcolors.players.append(client_id)
+async def boc_add(client: Client):
+    print(f"Client ID: {client.id}")
+    battleofcolors.players.append(client.id)
     return "OK"
 
 @app.get("/boc")
