@@ -47,6 +47,10 @@ async def boc_add(client_id: str):
     battleofcolors.players.append(client_id)
     return "OK"
 
+@app.get("/boc")
+def boc_players():
+    return battleofcolors.getPlayers()
+
 if __name__ == "__main__":
     import uvicorn
     # Start the ping_clients task in the background
