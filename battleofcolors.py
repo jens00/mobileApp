@@ -1,3 +1,4 @@
+from fastapi import WebSocket
 import random
 
 players = []
