@@ -50,7 +50,7 @@ def read_root():
 def boc_add(client: Client):
     print(f"Client ID: {client.id}")
     websocket = clients.get(client.id)
-    asyncio.run(battleofcolors.addPlayer(client.id, websocket))
+    asyncio.run(battleofcolors.addPlayer(client.id, clients))
     return "OK"
 
 @app.get("/boc")
