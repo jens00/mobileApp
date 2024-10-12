@@ -49,6 +49,7 @@ def read_root():
 @app.post("/boc/add")
 async def boc_add(client: Client):
     print(f"Client ID: {client.id}")
+    websocket = clients.get(client.id)
     battleofcolors.players.append(client.id)
     return "OK"
 
