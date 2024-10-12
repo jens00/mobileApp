@@ -47,7 +47,7 @@ def read_root():
     return HTMLResponse("<h1>WebSocket Server Running</h1>")
 
 @app.post("/boc/add")
-async def boc_add(client: Client):
+def boc_add(client: Client):
     print(f"Client ID: {client.id}")
     websocket = clients.get(client.id)
     asyncio.run(battleofcolors.addPlayer(client.id, websocket))
