@@ -1,4 +1,5 @@
 from fastapi import WebSocket
+from typing import Dict
 import random
 import asyncio
 
@@ -12,11 +13,11 @@ def getQueue():
   return queue
 
 async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
-  print("Adding player")
   players.append(client_id)
 
   if len(queue) > 0:
     random_player = random.choice(queue)
+    websocket = clients.get(random_player)
     queue.remove(random_player)
 
     try:
