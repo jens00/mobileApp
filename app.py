@@ -42,11 +42,7 @@ def read_root():
 @app.post("/boc/add")
 async def boc_add(client_id: str):
     print(f"Client ID: {client_id}")
-    return {"client_id": client_id}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
+    return "OK"
 
 if __name__ == "__main__":
     import uvicorn
