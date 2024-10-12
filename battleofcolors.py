@@ -21,7 +21,7 @@ async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
     queue.remove(random_player)
 
     try:
-      await websocket.send_text("found player for battle of colors")
+      await websocket.send_text("found player:boc")
     except (asyncio.TimeoutError):
       print("No response from client: " + client_id)
   else:
