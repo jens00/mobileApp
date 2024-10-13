@@ -49,6 +49,11 @@ def read_root():
 @app.post("/boc/add")
 def boc_add(client: Client):
     print(f"Client ID: {client.id}")
+
+    if client.id in battleofcolors.getPlayers():
+        print(f"Client {client.id} is already in the game.")
+        return "Client already in the game"
+        
     websocket = clients.get(client.id)
     asyncio.run(battleofcolors.addPlayer(client.id, clients))
     return "OK"
