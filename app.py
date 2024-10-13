@@ -57,6 +57,23 @@ def boc_add(client: Client):
 def boc_players():
     return battleofcolors.getPlayers()
 
+@app.route("/privacy")
+def privacy_policy():
+    with open("privacy_policy.txt", "r") as file:
+        # Load the privacy policy from the .txt file
+        privacy_policy_text = load_privacy_policy()
+        
+        # Render the privacy policy using a simple HTML template
+        return render_template_string('''
+        <html>
+        <head><title>Privacy Policy</title></head>
+        <body>
+            <h1>Privacy Policy</h1>
+            <pre>{{ policy_text }}</pre>
+        </body>
+        </html>
+        ''', policy_text=file.read())
+
 if __name__ == "__main__":
     import uvicorn
     # Start the ping_clients task in the background
