@@ -59,10 +59,7 @@ def boc_players():
 
 @app.route("/privacy")
 def privacy_policy():
-    with open("privacy_policy.txt", "r") as file:
-        # Load the privacy policy from the .txt file
-        privacy_policy_text = load_privacy_policy()
-        
+    with open("privacypolicy.txt", "r") as file:
         # Render the privacy policy using a simple HTML template
         return render_template_string('''
         <html>
