@@ -1,0 +1,24 @@
+Privacy Policy
+Effective Date: 13/10/2024
+
+We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how our mobile app collects, uses, and shares information, as well as your rights concerning this data.
+
+1. Information We Collect
+We collect your name (username) when you use our app. No sensitive personal data is collected.
+2. How We Use Your Information
+The username you provide is used solely within the app and is deleted when you close the app.
+We use Google services to serve personalized advertisements based on your interactions within the app.
+3. Data Sharing
+Your information is shared with Google for the purpose of delivering personalized ads. We do not share your data with any other third parties.
+Google may collect additional data through their services in accordance with their own privacy policy.
+4. Data Storage and Retention
+We do not store or retain your personal data. The username is temporarily saved while you are using the app and is deleted once the app is closed.
+5. Your Rights
+At this time, we do not offer a way for users to delete or update their data, as no personal data is retained after the app is closed.
+If you have any questions or concerns, please contact us using the email provided on the app’s download page.
+6. Third-Party Services
+We use Google services for advertisements and other functionalities. Google may collect data in accordance with their own privacy practices.
+7. Changes to This Policy
+We reserve the right to update this privacy policy at any time. Users will be notified of any changes to the policy through the app.
+8. Contact Information
+For any privacy-related inquiries, please refer to the contact information provided on the app’s download page.
