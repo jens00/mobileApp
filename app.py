@@ -57,7 +57,7 @@ def boc_add(client: Client):
 def boc_players():
     return battleofcolors.getPlayers()
 
-@app.route("/privacy")
+@app.get("/privacy")
 def privacy_policy():
     with open("privacypolicy.txt", "r") as file:
         # Render the privacy policy using a simple HTML template
