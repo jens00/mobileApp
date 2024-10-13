@@ -38,3 +38,5 @@ async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
 def removePlayerById(client_id: str):
     if client_id in players:
         players.remove(client_id)
+    if client_id in queue:
+        queue.remove(client_id)
