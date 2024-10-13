@@ -13,6 +13,7 @@ def getQueue():
   return queue
 
 async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
+  print("1")
   players.append(client_id)
 
   if len(queue) > 0:
