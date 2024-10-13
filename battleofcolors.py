@@ -13,6 +13,10 @@ def getQueue():
   return queue
 
 async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
+  if websocket is None:
+        print("Error: WebSocket is not initialized.")
+        return
+    
   players.append(client_id)
 
   if len(queue) > 0:
