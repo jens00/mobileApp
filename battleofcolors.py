@@ -13,15 +13,17 @@ def getQueue():
   return queue
 
 async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
-  if websocket is None:
-        print("Error: WebSocket is not initialized.")
-        return
-    
   players.append(client_id)
 
   if len(queue) > 0:
     random_player = random.choice(queue)
     websocket = clients.get(random_player)
+
+    if websocket is None:
+        print("Error: WebSocket is not initialized.")
+        players.remove(client_id)
+        return
+    
     queue.remove(random_player)
 
     try:
