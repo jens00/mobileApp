@@ -61,7 +61,16 @@ def boc_players():
 def privacy_policy():
     with open("privacypolicy.txt", "r") as file:
         # Render the privacy policy using a simple HTML template
-        return HTMLResponse("<html><head><title>Privacy Policy</title></head><body><pre>{{ policy_text }}</pre></body></html>")
+        html_content = f"""
+        <html>
+        <head><title>Privacy Policy</title></head>
+        <body>
+            <h1>Privacy Policy</h1>
+            <pre>{file.read()}</pre>
+        </body>
+        </html>
+        """
+        return HTMLResponse(content=html_content)
 
 if __name__ == "__main__":
     import uvicorn
