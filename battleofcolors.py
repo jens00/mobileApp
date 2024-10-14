@@ -27,16 +27,20 @@ async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
     queue.remove(random_player)
 
     try:
-      await clients.get(client_id).send_text(f"found player:boc:{random_player}")
-      await websocket.send_text(f"found player:boc:{client_id}")
+      number = random.randint(1, 2)
+      if number == 1:
+        await clients.get(client_id).send_text(f"found player:boc:{random_player}:{client_id}")
+        await websocket.send_text(f"found player:boc:{client_id}:{client_id}")
+      else:
+        await clients.get(client_id).send_text(f"found player:boc:{random_player}:{random_player}")
+        await websocket.send_text(f"found player:boc:{client_id}:{random_player}")
     except (asyncio.TimeoutError):
       print("No response from client: " + client_id)
   else:
     queue.append(client_id)
-    
 
 def removePlayerById(client_id: str):
-    if client_id in players:
-        players.remove(client_id)
-    if client_id in queue:
-        queue.remove(client_id)
+  if client_id in players:
+      players.remove(client_id)
+  if client_id in queue:
+      queue.remove(client_id)
