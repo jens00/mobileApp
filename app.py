@@ -72,7 +72,7 @@ def boc_endturn(endturn: BocEndturn):
         
     websocket = clients.get(endturn.opponent)
     self = clients.get(endturn.id)
-    asyncio.run(battleofcolors.endTurn(endturn.id, websocket, self))
+    asyncio.run(battleofcolors.endTurn(endturn.id, websocket, self, endturn.tile))
     return "OK"
 
 @app.get("/boc")
