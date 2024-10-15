@@ -71,7 +71,8 @@ def boc_endturn(endturn: BocEndturn):
         return "Client is not in a game"
         
     websocket = clients.get(endturn.opponent)
-    asyncio.run(battleofcolors.endTurn(websocket))
+    self = clients.get(enturn.id)
+    asyncio.run(battleofcolors.endTurn(endturn.id, websocket, self))
     return "OK"
 
 @app.get("/boc")
