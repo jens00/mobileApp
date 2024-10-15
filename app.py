@@ -12,6 +12,11 @@ clients: Dict[str, WebSocket] = {}  # Dictionary to hold client ID and WebSocket
 class Client(BaseModel):
     id: str
 
+class BocEndturn(BaseModel):
+    id: str
+    tile: str
+    opponent: str
+
 # Function to send ping and check response
 async def ping_clients():
     while True:
@@ -54,8 +59,19 @@ def boc_add(client: Client):
         print(f"Client {client.id} is already in the game.")
         return "Client already in the game"
         
-    websocket = clients.get(client.id)
     asyncio.run(battleofcolors.addPlayer(client.id, clients))
+    return "OK"
+
+@app.post("/boc/endturn")
+def boc_endturn(endturn: BocEndturn):
+    print(f"Client ID: {endturn.id}")
+
+    if not endturn.id in battleofcolors.getPlayers():
+        print(f"Client {endturn.id} is not in a game!")
+        return "Client is not in a game"
+        
+    websocket = clients.get(endturn.opponent)
+    asyncio.run(battleofcolors.endTurn(websocket))
     return "OK"
 
 @app.get("/boc")
@@ -65,7 +81,6 @@ def boc_players():
 @app.get("/privacy")
 def privacy_policy():
     with open("privacypolicy.txt", "r") as file:
-        # Render the privacy policy using a simple HTML template
         html_content = f"""
         <html>
         <head><title>Privacy Policy</title></head>
