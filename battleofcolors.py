@@ -39,9 +39,13 @@ async def addPlayer(client_id: str, clients: Dict[str, WebSocket]):
   else:
     queue.append(client_id)
 
-async def endTurn(client_id: str, websocket: WebSocket):
+async def endTurn(client_id: str, websocket: WebSocket, self:WebSocket):
   if websocket is None:
     print("Error: WebSocket is not initialized.")
+    try:
+      await self.send_text("win:boc")
+    except Exception:
+      pass
     
   try:
     await websocket.send_text(f"turn:boc:{client_id}")
