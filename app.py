@@ -82,10 +82,10 @@ def boc_endturn(endturn: BocEndturn):
 
 @app.post("/boc/lost")
 def boc_lost(lost: BocLost):
-    print(f"Client ID: {loser.id}")
+    print(f"Client ID: {lost.winner}")
 
-    if not loser.id in battleofcolors.getPlayers():
-        print(f"Client {loser.id} is not in a game!")
+    if not lost.winner in battleofcolors.getPlayers():
+        print(f"Client {lost.winner} is not in a game!")
         return "Client is not in a game"
         
     winner = clients.get(lost.winner)
