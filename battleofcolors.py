@@ -52,6 +52,12 @@ async def endTurn(client_id: str, websocket: WebSocket, self:WebSocket, tile: st
   except Exception:
     pass
 
+async def win(winner: str, loser: WebSocket, tile: str):
+  try:
+    await websocket.send_text(f"win:boc:{tile}")
+  except Exception:
+    pass
+
 def removePlayerById(client_id: str):
   if client_id in players:
     players.remove(client_id)
