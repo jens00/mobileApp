@@ -17,6 +17,11 @@ class BocEndturn(BaseModel):
     tile: str
     opponent: str
 
+class BocLost(BaseModel):
+    winner: str
+    loser: str
+    tile: str
+
 # Function to send ping and check response
 async def ping_clients():
     while True:
@@ -73,6 +78,19 @@ def boc_endturn(endturn: BocEndturn):
     websocket = clients.get(endturn.opponent)
     self = clients.get(endturn.id)
     asyncio.run(battleofcolors.endTurn(endturn.id, websocket, self, endturn.tile))
+    return "OK"
+
+@app.post("/boc/lost")
+def boc_lost(lost: BocLost):
+    print(f"Client ID: {loser.id}")
+
+    if not loser.id in battleofcolors.getPlayers():
+        print(f"Client {loser.id} is not in a game!")
+        return "Client is not in a game"
+        
+    winner = clients.get(lost.winner)
+    loser = clients.get(lost.loser)
+    asyncio.run(battleofcolors.win(winner, loser, lost.tile))
     return "OK"
 
 @app.get("/boc")
