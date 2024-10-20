@@ -116,3 +116,4 @@ if __name__ == "__main__":
     # Start the ping_clients task in the background
     asyncio.run(ping_clients())
     uvicorn.run(app, host="0.0.0.0", port=8205)
+    # if [[ -d .git ]] && [[ "1" == "1" ]]; then git pull; fi; if [[ ! -z "" ]]; then pip install -U --prefix .local ; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python -m uvicorn app:app --host 0.0.0.0 --port 8205 --reload
