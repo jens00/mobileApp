@@ -111,6 +111,20 @@ def privacy_policy():
         """
         return HTMLResponse(content=html_content)
 
+@app.get("/terms")
+def privacy_policy():
+    with open("termsandconditions.txt", "r") as file:
+        html_content = f"""
+        <html>
+        <head><title>Terms And Conditions</title></head>
+        <body>
+            <h1>Terms And Conditions</h1>
+            <pre>{file.read()}</pre>
+        </body>
+        </html>
+        """
+        return HTMLResponse(content=html_content)
+
 if __name__ == "__main__":
     import uvicorn
     # Start the ping_clients task in the background
